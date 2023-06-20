@@ -1,5 +1,6 @@
-package entity;
+package com.example.stapler.entity;
 
+import com.example.stapler.StaplerInterface;
 import jakarta.persistence.Entity;
 import lombok.*;
 
@@ -8,7 +9,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Stapler extends BasicEntity implements StaplerInterface{
+public class Stapler extends BasicEntity implements StaplerInterface {
 
     private boolean isLoaded;
     private int stapleCount;

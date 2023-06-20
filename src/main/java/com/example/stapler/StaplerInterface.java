@@ -1,4 +1,4 @@
-package entity;
+package com.example.stapler;
 
 public interface StaplerInterface {
     void stapleSheets(int numSheets);

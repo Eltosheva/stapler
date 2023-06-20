@@ -1,4 +1,4 @@
-package entity;
+package com.example.stapler.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
