@@ -11,13 +11,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Stapler extends BaseMachine implements StaplerInterface {
     private boolean isLoaded;
-    private int stapleCount;
+    private StaplerFiller staplerFiller;
     private int capacity;
 
     @Override
     public void stapleSheets(int numSheets) {
-        if (stapleCount >= numSheets) {
-            stapleCount -= numSheets;
+        if (staplerFiller.getStapleCount() >= numSheets) {
+            staplerFiller.setStapleCount(staplerFiller.getStapleCount() - numSheets);
             System.out.println("Stapled " + numSheets + " sheets.");
         } else {
             System.out.println("Insufficient staples. Please refill.");
@@ -31,7 +31,7 @@ public class Stapler extends BaseMachine implements StaplerInterface {
                     + capacity + ". Refill is failed.");
             return;
         }
-        stapleCount += numStaples;
+        staplerFiller.setStapleCount(staplerFiller.getStapleCount() + numStaples);
         isLoaded = true;
         System.out.println("Refilled " + numStaples + " staples.");
     }
@@ -39,7 +39,7 @@ public class Stapler extends BaseMachine implements StaplerInterface {
     @Override
     public void unloadStaples() {
         if (isLoaded) {
-            stapleCount = 0;
+            staplerFiller.setStapleCount(0);
             isLoaded = false;
             System.out.println("Staples unloaded.");
         } else {
@@ -48,7 +48,7 @@ public class Stapler extends BaseMachine implements StaplerInterface {
     }
 
     @Override
-    public boolean isEmpty(int numStaples) {
-        return numStaples <= 0;
+    public boolean isEmpty() {
+        return staplerFiller.getStapleCount() <= 0;
     }
 }
