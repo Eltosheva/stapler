@@ -1,4 +1,4 @@
-package com.example.stapler;
+package com.example.stapler.model;
 
 public interface StaplerInterface {
     void stapleSheets(int numSheets);

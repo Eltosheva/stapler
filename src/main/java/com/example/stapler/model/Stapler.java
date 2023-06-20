@@ -1,18 +1,15 @@
-package com.example.stapler.entity;
+package com.example.stapler.model;
 
-import com.example.stapler.StaplerInterface;
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Stapler extends BasicEntity implements StaplerInterface {
+public class Stapler extends OfficeMachine implements StaplerInterface {
     private boolean isLoaded;
     private int stapleCount;
     private int capacity;
