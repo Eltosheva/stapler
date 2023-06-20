@@ -35,4 +35,15 @@ public class Stapler extends BasicEntity implements StaplerInterface {
         stapleCount += numStaples;
         System.out.println("Refilled " + numStaples + " staples.");
     }
+
+    @Override
+    public void unloadStaples() {
+        if (isLoaded) {
+            stapleCount = 0;
+            isLoaded = false;
+            System.out.println("Staples unloaded.");
+        } else {
+            System.out.println("Stapler is already empty.");
+        }
+    }
 }
