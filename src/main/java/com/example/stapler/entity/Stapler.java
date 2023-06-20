@@ -2,7 +2,10 @@ package com.example.stapler.entity;
 
 import com.example.stapler.StaplerInterface;
 import jakarta.persistence.Entity;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -10,7 +13,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Stapler extends BasicEntity implements StaplerInterface {
-
     private boolean isLoaded;
     private int stapleCount;
     private int capacity;
@@ -29,10 +31,11 @@ public class Stapler extends BasicEntity implements StaplerInterface {
     public void refillStaples(int numStaples) {
         if (numStaples > capacity) {
             System.out.println("Уou have placed too many staples. Capacity is "
-             + capacity + ". Refill is failed.");
+                    + capacity + ". Refill is failed.");
             return;
         }
         stapleCount += numStaples;
+        isLoaded = true;
         System.out.println("Refilled " + numStaples + " staples.");
     }
 
