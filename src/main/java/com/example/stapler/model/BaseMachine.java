@@ -7,8 +7,8 @@ import java.time.LocalDate;
 
 @Setter
 @Getter
-abstract class OfficeMachine {
-    private int id;
+abstract class BaseMachine {
+    private int serialNumber;
     LocalDate createDate;
     String color;
 }

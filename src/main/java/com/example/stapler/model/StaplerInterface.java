@@ -6,4 +6,6 @@ public interface StaplerInterface {
     void refillStaples(int numStaples);
 
     void unloadStaples();
+
+    boolean isEmpty(int numStaples);
 }

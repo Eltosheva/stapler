@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Stapler extends OfficeMachine implements StaplerInterface {
+public class Stapler extends BaseMachine implements StaplerInterface {
     private boolean isLoaded;
     private int stapleCount;
     private int capacity;
@@ -45,5 +45,10 @@ public class Stapler extends OfficeMachine implements StaplerInterface {
         } else {
             System.out.println("Stapler is already empty.");
         }
+    }
+
+    @Override
+    public boolean isEmpty(int numStaples) {
+        return numStaples <= 0;
     }
 }
