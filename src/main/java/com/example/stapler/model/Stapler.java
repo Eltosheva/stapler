@@ -40,8 +40,8 @@ public class Stapler extends BaseMachine implements StaplerInterface {
 
     @Override
     public StaplerFiller unloadStaples() {
-        StaplerFiller staplerFiller = this.getStaplerFiller();
-        if (isEmpty()) {
+        this.staplerFiller = getStaplerFiller();
+        if (!isEmpty()) {
             staplerFiller.setStapleAmount(0);
             System.out.println("Staples unloaded.");
         } else {
