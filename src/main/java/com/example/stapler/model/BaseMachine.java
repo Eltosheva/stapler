@@ -8,11 +8,11 @@ import java.time.LocalDate;
 abstract class BaseMachine {
     private final int serialNumber;
     private final LocalDate createDate;
-    private final String color;
+    private final Color color;
 
-    protected BaseMachine(int serialNumber, LocalDate createDate, String color) {
+    protected BaseMachine(int serialNumber, LocalDate createDate, Color color) {
         this.serialNumber = serialNumber;
-        this.createDate = createDate;
+        this.createDate = createDate != null ? createDate : LocalDate.now();
         this.color = color;
     }
 }
