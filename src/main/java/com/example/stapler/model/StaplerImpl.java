@@ -31,7 +31,7 @@ public class StaplerImpl extends BaseMachine implements Stapler {
 
     @Override
     public void refillStaples(StaplerFiller staplerFiller) {
-        if (staplerFiller.getStapleSize() != this.staplerFiller.getStapleSize()) {
+        if (staplerFiller.getStapleSize() != this.requiredSize) {
             throw new IllegalArgumentException("You tried to use wrong filler size. Refill is failed.");
         }
         if (staplerFiller.getStapleAmount() > capacity) {
