@@ -25,7 +25,7 @@ public class StaplerImpl extends BaseMachine implements Stapler {
             staplerFiller.setStapleAmount(staplerFiller.getStapleAmount() - numPushes);
             System.out.println(numPushes + " pushes made.");
         } else {
-            System.out.println("Insufficient staples. Please refill.");
+            throw new IllegalArgumentException("Insufficient staples. Please refill.");
         }
     }
 
@@ -35,9 +35,8 @@ public class StaplerImpl extends BaseMachine implements Stapler {
             throw new IllegalArgumentException("You tried to use wrong filler size. Refill is failed.");
         }
         if (staplerFiller.getStapleAmount() > capacity) {
-            System.out.println("Уou have placed too many staples. Capacity is "
+            throw new IllegalArgumentException("Уou have placed too many staples. Capacity is "
                     + capacity + ". Refill is failed.");
-            return;
         }
         this.staplerFiller.setStapleAmount(staplerFiller.getStapleAmount());
         System.out.println("Refilled " + staplerFiller + " staples.");
@@ -52,8 +51,7 @@ public class StaplerImpl extends BaseMachine implements Stapler {
             System.out.println("Staples unloaded.");
             return unloadedFiller;
         } else {
-            System.out.println("Stapler is already empty.");
-            return staplerFiller;
+            throw new IllegalStateException("Stapler is already empty.");
         }
     }
 
