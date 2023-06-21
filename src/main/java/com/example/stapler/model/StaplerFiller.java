@@ -6,6 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class StaplerFiller {
-    private int stapleCount;
-    private int size;
+    private int stapleAmount;
+    private int stapleSize;
+
+    boolean isEmpty() {
+        return this.stapleAmount <= 0;
+    }
 }

@@ -1,23 +1,26 @@
 package com.example.stapler.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Stapler extends BaseMachine implements StaplerInterface {
-    private boolean isLoaded;
     private StaplerFiller staplerFiller;
     private int capacity;
 
+    public Stapler(StaplerFiller staplerFiller, int capacity, int serialNumber, LocalDate createDate, String color) {
+        super(serialNumber, createDate, color);
+        this.staplerFiller = staplerFiller;
+        this.capacity = capacity;
+    }
+
     @Override
     public void stapleSheets(int numSheets) {
-        if (staplerFiller.getStapleCount() >= numSheets) {
-            staplerFiller.setStapleCount(staplerFiller.getStapleCount() - numSheets);
+        if (staplerFiller.getStapleAmount() >= numSheets) {
+            staplerFiller.setStapleAmount(staplerFiller.getStapleAmount() - numSheets);
             System.out.println("Stapled " + numSheets + " sheets.");
         } else {
             System.out.println("Insufficient staples. Please refill.");
@@ -31,24 +34,24 @@ public class Stapler extends BaseMachine implements StaplerInterface {
                     + capacity + ". Refill is failed.");
             return;
         }
-        staplerFiller.setStapleCount(staplerFiller.getStapleCount() + numStaples);
-        isLoaded = true;
+        staplerFiller.setStapleAmount(staplerFiller.getStapleAmount() + numStaples);
         System.out.println("Refilled " + numStaples + " staples.");
     }
 
     @Override
-    public void unloadStaples() {
-        if (isLoaded) {
-            staplerFiller.setStapleCount(0);
-            isLoaded = false;
+    public StaplerFiller unloadStaples() {
+        StaplerFiller staplerFiller = this.getStaplerFiller();
+        if (isEmpty()) {
+            staplerFiller.setStapleAmount(0);
             System.out.println("Staples unloaded.");
         } else {
             System.out.println("Stapler is already empty.");
         }
+        return staplerFiller;
     }
 
     @Override
     public boolean isEmpty() {
-        return staplerFiller.getStapleCount() <= 0;
+        return staplerFiller.isEmpty();
     }
 }
