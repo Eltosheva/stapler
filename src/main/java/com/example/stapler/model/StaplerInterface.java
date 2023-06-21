@@ -1,9 +1,9 @@
 package com.example.stapler.model;
 
 public interface StaplerInterface {
-    void stapleSheets(int numSheets);
+    void staplerPushes(int numPushes);
 
-    void refillStaples(int numStaples);
+    void refillStaples(StaplerFiller staplerFiller);
 
     StaplerFiller unloadStaples();
 
