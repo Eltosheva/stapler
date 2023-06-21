@@ -10,7 +10,7 @@ abstract class BaseMachine {
     private final LocalDate createDate;
     private final String color;
 
-    BaseMachine(int serialNumber, LocalDate createDate, String color) {
+    protected BaseMachine(int serialNumber, LocalDate createDate, String color) {
         this.serialNumber = serialNumber;
         this.createDate = createDate;
         this.color = color;
